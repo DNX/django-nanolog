@@ -2,7 +2,7 @@
 Nanolog
 =======
 
-Nanolog is a simple Django app to store simple logs.
+Nanolog is a simple Django app to store simple logs, basically for statistical purposes.
 
 Detailed documentation is in the "docs" directory.
 
@@ -25,3 +25,10 @@ Import nanolog and log everything like this::
 
     from nanolog.utils import nanolog
     nanolog(user, 'access', 'product', product_instance)
+
+Test
+----
+
+Just run::
+
+    ./manage.py test nanolog
