@@ -1,0 +1,3 @@
+.pyc$
+^dist/
+^django_nanolog.egg-info/
