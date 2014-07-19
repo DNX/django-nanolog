@@ -30,6 +30,9 @@ class SimpleTest(TestCase):
         nanolog('', 'this_area')
         self.assertEquals(logs.count(), 1)
 
+        nanolog('', '')
+        self.assertEquals(logs.count(), 1)
+
         nanolog('changed_password', 'from:x|to:y', 'as we sugested in the newsletter')
         self.assertEquals(logs.count(), 2)
         self.assertEquals(logs[0].user, None)

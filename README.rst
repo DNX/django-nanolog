@@ -24,7 +24,7 @@ Usage
 Import nanolog and log everything like this::
 
     from nanolog.utils import nanolog
-    nanolog(user, 'access', 'product', product_instance)
+    nanolog('changed_password', 'from:x|to:y', 'as we sugested', self.user, '127.0.0.1', log_object)
 
 Test
 ----
