@@ -22,4 +22,7 @@ class Nanolog(models.Model):
         ordering = ['-created_date']
 
     def __unicode__(self):
-        return " - ".join((unicode(self.school), unicode(self.created_date)))
+        values = ['nanolog', unicode(self.log_type), unicode(self.created_date)]
+        if self.user:
+            values.insert(2, self.user.username)
+        return " - ".join(values)
