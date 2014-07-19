@@ -7,24 +7,24 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding model 'Nanolog'
         db.create_table('nanolog_nanolog', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
             ('log_type', self.gf('django.db.models.fields.CharField')(max_length=255, db_index=True)),
-            ('details', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('ip', self.gf('django.db.models.fields.GenericIPAddressField')(max_length=39, null=True, blank=True)),
+            ('details', self.gf('django.db.models.fields.CharField')(max_length=255, db_index=True)),
+            ('ip', self.gf('django.db.models.fields.GenericIPAddressField')(db_index=True, max_length=39, null=True, blank=True)),
             ('note', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
             ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'], null=True, blank=True)),
             ('object_id', self.gf('django.db.models.fields.PositiveIntegerField')(null=True, blank=True)),
-            ('created_date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('created_date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, db_index=True, blank=True)),
         ))
         db.send_create_signal('nanolog', ['Nanolog'])
 
 
     def backwards(self, orm):
-        
+
         # Deleting model 'Nanolog'
         db.delete_table('nanolog_nanolog')
 
@@ -45,7 +45,7 @@ class Migration(SchemaMigration):
         },
         'auth.user': {
             'Meta': {'ordering': "['username']", 'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2014, 7, 19, 19, 26, 28, 512944)'}),
+            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2014, 7, 19, 20, 48, 40, 655307)'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
@@ -53,7 +53,7 @@ class Migration(SchemaMigration):
             'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2014, 7, 19, 19, 26, 28, 512875)'}),
+            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2014, 7, 19, 20, 48, 40, 655233)'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
@@ -69,10 +69,10 @@ class Migration(SchemaMigration):
         'nanolog.nanolog': {
             'Meta': {'ordering': "['-created_date']", 'object_name': 'Nanolog'},
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']", 'null': 'True', 'blank': 'True'}),
-            'created_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'details': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'created_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
+            'details': ('django.db.models.fields.CharField', [], {'max_length': '255', 'db_index': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'ip': ('django.db.models.fields.GenericIPAddressField', [], {'max_length': '39', 'null': 'True', 'blank': 'True'}),
+            'ip': ('django.db.models.fields.GenericIPAddressField', [], {'db_index': 'True', 'max_length': '39', 'null': 'True', 'blank': 'True'}),
             'log_type': ('django.db.models.fields.CharField', [], {'max_length': '255', 'db_index': 'True'}),
             'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'object_id': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'}),
